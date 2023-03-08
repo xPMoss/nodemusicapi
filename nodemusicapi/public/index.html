@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <title>Discography</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+
+    <div style="width: 90%; margin-left:auto; margin-right: auto; line-height: 150%;">
+      <p>
+        <b>Discography API</b><br/>
+        <br/>
+
+        <b>GET</b><br/>
+        GET /users<br/> <small>(Returnerar en lista av alla användare)</small>
+        <br/>
+        GET /users?id={id}<br/> <small>(Returnerar en specifik användare med det id som angivits, eller status 204 No Content om ej finns)</small>
+        <br/>
+        GET /members<br/> <small>(Returnerar en lista av alla medlemmar)</small>
+        <br/>
+        GET /members?id={id}<br/> <small>(Returnerar en specifik medlem med det id som angivits, eller status 204 No Content om ej finns)</small>
+        <br/>
+        GET /albums<br/> <small>(Returnerar en lista av alla album)</small>
+        <br/>
+        GET /albums?id={id}<br/> <small>(Returnerar ett specifik album med det id som angivits, eller status 204 No Content om ej finns)</small>
+        <br/>
+        GET /songs<br/> <small>(Returnerar en lista av alla sånger)</small>
+        <br/>
+        GET /songs?id={id}<br/> <small>(Returnerar en specifik sång med det id som angivits, eller status 204 No Content om ej finns)</small>
+        <br/>
+        GET /songs?album_id={album_id}<br/> <small>(Returnerar alla sånger ur ett specifikt album med det album_id som angivits, eller status 204 No Content om ej finns)</small>
+        <br/>
+        <br/>
+
+        <b>POST</b><br/>
+        POST /users <br/>
+        <small>(Skapar en ny användare. Lösenordet hashas med hashningsalgoritmen 'sha256'. Validerar skickad data och returnerar status 422 unprocessable entity om data ej angivits rätt) 
+        <br/>
+        En användare ska se ut så här: <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;{ <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastname": "XXXXX", <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"firstname": "XXXXX", <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email": "XXXXX", <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"username": "XXXXX", <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "XXXXX" <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;} </small>
+        <br/>
+        POST /login <br/>
+        <small> 
+          (Loggar in användare, Lösenordet hashas med hashningsalgoritmen 'sha256' och jämförs med det hashade lösenordet i databasen. Returnerar status 401 unauthorized entity om data ej är rätt)<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"username": "XXXXX", <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "XXXXX"<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;} 
+        </small>
+        <br/>
+        <br/>
+
+        <b>PUT</b><br/>
+        PUT /users/{id} <br/>
+        <small>
+          (Updaterar en specifik användare med det id som angivits. Validerar skickad data och returnerar status 422 unprocessable entity om data ej angivits rätt, eller status 204 No Content om ej finns)<br/>
+          Ändringen ska se ut så här:<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;{ <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastname": "XXXXX", <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"firstname": "XXXXX", <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email": "XXXXX", <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"username": "XXXXX", <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "XXXXX" <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;} 
+        </small>
+        <br/><br/>
+
+        <b>DELETE</b><br/>
+        DELETE /users/{id}<br/>
+        <small>(Tar bort en specifik användare med det id som angivits)</small>
+
+        <br/>
+
+      </p>
+      
+      <br/><br/><br/>
+      <!-- 
+      // ---------- // <br/>
+      Snabblänkar GET:<br/>
+      <a href="/albums">Discography</a><br/>
+      <a href="/members">Memebrs</a><br/>
+      <a href="/songs">Songs</a><br/>
+      <a href="/users">Users</a><br/>
+      / ---------- // 
+      <br/><br/><br/>
+      -->
+    </div>
+    
+
+    <script src="script.js"></script>
+  </body>
+</html>
